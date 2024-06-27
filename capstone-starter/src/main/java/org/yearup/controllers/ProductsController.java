@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class ProductsController
 {
     private final ProductDao productDao;
@@ -30,8 +30,7 @@ public class ProductsController
     public ResponseEntity<List<Product>> search(@RequestParam(name="cat", required = false) Integer categoryId,
                                           @RequestParam(name="minPrice", required = false) BigDecimal minPrice,
                                           @RequestParam(name="maxPrice", required = false) BigDecimal maxPrice,
-                                          @RequestParam(name="color", required = false) String color
-                                )
+                                          @RequestParam(name="color", required = false) String color)
     {
         try
         {
@@ -50,7 +49,7 @@ public class ProductsController
     {
         try
         {
-            var product = productDao.getById(id);
+            Product product = productDao.getById(id);
 
             if(product == null)
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");

@@ -18,7 +18,7 @@ import java.util.List;
 // add annotation to allow cross site origin requests
 @RestController
 @RequestMapping("/categories")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class CategoriesController
 {
     private CategoryDao categoryDao;
